@@ -1,0 +1,3 @@
+topicx, homes, difficulty, housing, food, water, solutions, air, forms, energy, power
+topicx, spirit, question, space, exploration, needs, earth, decades, arguments, stem, belief
+topicx, safety, scientists, astronauts, missions, ways, health, conditions, launch, instruments, doctors

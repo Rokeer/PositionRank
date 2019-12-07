@@ -1,0 +1,18 @@
+topicx, irrigation, fertilizer, farmers, crops, plant, seeds, outcome, lack, tools
+topicx, road, brighter, future, hannah, car, sauri, market, year, time, place, years, poverty, life, communities, leaders, glimpse, africa, chemicals, solutions, millions
+topicx, diseases, medicine, malaria, disease, mosquitoes, charge
+topicx, adults
+topicx, fight, lifetime
+topicx, development, villages, project, goals, plan, economy, quality, supporters
+topicx, joyful, dirt, jump, bar, music, singing, everyone, dancing, help, health, advice, items, targets, bed, death, night, net, costs, die, nets
+topicx, people, kids
+topicx, midday, school, fees, students, meal, energy, lunch
+topicx, village
+topicx, millennium
+topicx, backs, women, ground, bananas, cloth, mothers, feet, clothing, day, rooms, family
+topicx, plenty, access, care, medicines, schools, today, supply, areas, kind
+topicx, doctor, hospital, shape, patients, treatment, officer, water, electricity, generator
+topicx, thing
+topicx, paper, supplies, chores, books, pencils
+topicx, end
+topicx, work, world

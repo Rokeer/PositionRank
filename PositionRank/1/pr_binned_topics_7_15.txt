@@ -1,0 +1,7 @@
+topicx, year, years, farmers, plant
+topicx, car, brighter, future, hannah, dirt, road, jump, sauri, market, people, everyone, time, place, poverty, life
+topicx, diseases, medicine, patients, malaria, disease, mosquitoes, charge
+topicx, adults
+topicx, fight, lifetime
+topicx, development, millennium, village, villages, project, goals, plan, access, economy, quality, changes, supporters
+topicx, dancing, women, ground, bananas, kids, cloth, mothers, backs, feet, clothing, bar, school, music, singing, joyful

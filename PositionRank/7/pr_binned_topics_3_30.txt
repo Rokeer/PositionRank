@@ -1,0 +1,3 @@
+topicx, homes, difficulty, housing, food, water, solutions, air, forms, energy, power, cars, factories
+topicx, spirit, question, space, exploration, needs, earth, decades, arguments, stem, belief, money, spent, people, lives, president, viewpoint, program, rocket, theft, citizens, hunger, poverty, americans, half, medicine, point, countries, access, care, spread
+topicx, safety, scientists, astronauts, missions, ways, health, conditions, launch, instruments, doctors, body, reaction, exercise, machines, airplanes, weather, forecasting, engineers, satellites, land, condition, crops, soil, rainfall, russia, greatness, moon

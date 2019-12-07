@@ -1,0 +1,7 @@
+topicx, disease, theft, access, solutions, spread, diseases, malaria, mosquito, bites, africa, nets, beds
+topicx, spirit, question, space, exploration, needs, earth, decades, arguments, stem, belief, money, spent, people, lives, president
+topicx, safety, scientists, astronauts, missions, ways, health, conditions, launch, instruments, doctors, body, reaction, exercise, machines, airplanes
+topicx, benefits, area
+topicx, cars, water, gasoline, oil, air, oceans, forms, energy, power, homes, factories
+topicx, example
+topicx, difficulty, americans, half, housing, food

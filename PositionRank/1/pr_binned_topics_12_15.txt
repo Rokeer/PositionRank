@@ -1,0 +1,12 @@
+topicx, plant, fertilizer, farmers, crops, irrigation, family, seeds, outcome, tools
+topicx, road, brighter, future, hannah, car, sauri, year, time, place, years, poverty, life, communities, leaders, world
+topicx, diseases, medicine, malaria, disease, mosquitoes, charge
+topicx, adults
+topicx, fight, lifetime
+topicx, development, villages, project, goals, plan, access, economy, quality, supporters
+topicx, dancing, dirt, jump, market, bar, music, singing, everyone, joyful, help, health, care, advice, items, supplies
+topicx, people, kids
+topicx, meal, school, day, fees, books, paper, pencils, students, midday, energy, lunch, attendance
+topicx, village
+topicx, millennium
+topicx, backs, women, ground, bananas, cloth, mothers, feet, clothing, shape, rooms, patients, doctor, officer

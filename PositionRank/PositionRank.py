@@ -101,9 +101,9 @@ class PositionRank(LoadFile):
                 else:
                     personalization[stem] = personalization.get(stem)+1.0/poz
 
-        factor = 1.0 / sum(personalization.itervalues())
+        factor = 1.0 / sum(iter(personalization.values()))
 
-        normalized_personalization = {k: v * factor for k, v in personalization.iteritems()}
+        normalized_personalization = {k: v * factor for k, v in iter(personalization.items())}
 
         # compute the word scores using personalized random walk
         pagerank_weights = nx.pagerank_scipy(self.graph, personalization=normalized_personalization, weight='weight')
@@ -120,11 +120,17 @@ class PositionRank(LoadFile):
                     # for harmonic mean
                     self.weights[c.stemmed_form] = [stem.stemmed_form for stem in self.candidates].count(c.stemmed_form) * \
                                                    len(c.stemmed_form.split()) / sum([1.0 / pagerank_weights[t] for t in c.stemmed_form.split()])
+                    self.weights_candidates[c] = [stem.stemmed_form for stem in self.candidates].count(c.stemmed_form) * \
+                                                 len(c.stemmed_form.split()) / sum([1.0 / pagerank_weights[t] for t in c.stemmed_form.split()])
                 else:
                     self.weights[c.stemmed_form] = pagerank_weights[c.stemmed_form]
+                    self.weights_candidates[c] = pagerank_weights[c.stemmed_form]
+
         else:
             for c in self.candidates:
                 self.weights[c.stemmed_form] = sum([pagerank_weights[t] for t in c.stemmed_form.split()])
+                self.weights_candidates[c] = sum([pagerank_weights[t] for t in c.stemmed_form.split()])
+
 
 
 

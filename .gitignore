@@ -1,0 +1,6 @@
+
+data/*
+.DS_store
+PositionRank/.idea
+*.pyc
+PositionRank/data/*

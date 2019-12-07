@@ -5,6 +5,11 @@ from nltk import pos_tag, word_tokenize, sent_tokenize
 import re
 from nltk.stem.porter import PorterStemmer
 from string import punctuation
+from gensim.models import Word2Vec, KeyedVectors
+from pyclustering.cluster.kmedoids import kmedoids
+from pyclustering.utils.metric import type_metric, distance_metric
+import random
+
 porter_stemmer = PorterStemmer()
 
 
@@ -64,6 +69,9 @@ class LoadFile(object):
         self.weights = {}
         """ The weight/score of candidates. """
 
+        self.weights_candidates = {}
+        """ The weight/score of real candidates, not stem form. """
+
         self.gold_keyphrases = []
 
         # the text is tokenized at the sentence level and part-of-speech tags are assigned
@@ -72,6 +80,7 @@ class LoadFile(object):
         # a stemmed form of sentences is also saved
         for s in self.sentences:
             self.stemmed_sentences.append([porter_stemmer.stem(w) for w, p in s])
+            #self.stemmed_sentences.append([w for w, p in s])
 
     def get_doc_words(self):
 
@@ -279,6 +288,102 @@ class LoadFile(object):
         # return only the k keyphrases
         return sorted_weights[:(min(k, len(sorted_weights)))]
 
+    def get_best_k_candidates(self, k=10):
+        """
+        return top k predicted keyphrases for the current document
+        :param k: top keyphrases to be retuned
+        :return: top k keyphrases and their weights
+        """
+
+        # sort the candidates in reverse order based on their weights
+        sorted_weights = sorted(self.weights_candidates, key=self.weights_candidates.get, reverse=True)
+
+        # return only the k keyphrases
+        return sorted_weights[:(min(k, len(sorted_weights)))]
+
+    def get_best_k_with_filter(self, k=10):
+        remove_list = []
+        keys = list(self.weights_candidates.keys())
+        self.word_list = []
+        for key_index_1 in range(len(keys)):
+            key1 = keys[key_index_1]
+            if len(key1.surface_form.split()) <= 1:
+                remove_list.append(key1)
+                if key1.surface_form not in self.word_list:
+                    self.word_list.append(key1.surface_form)
+                continue
+            for key_index_2 in range(key_index_1 + 1, len(keys)):
+                key2 = keys[key_index_2]
+                if key1.surface_form != key2.surface_form:
+                    if x_in_y(key1.surface_form, key2.surface_form) and self.weights_candidates[key1] <= self.weights_candidates[key2]:
+                        remove_list.append(key1)
+                        break
+                else:
+                    if self.weights_candidates[key1] <= self.weights_candidates[key2]:
+                        remove_list.append(key1)
+                        break
+
+        # for key1 in self.weights_candidates.keys():
+        #     if len(key1.surface_form.split()) <= 1:
+        #         remove_list.append(key1)
+        #         continue
+        #     for key2 in self.weights_candidates.keys():
+        #         if key1.surface_form != key2.surface_form:
+        #             if x_in_y(key1.surface_form, key2.surface_form) and self.weights_candidates[key1] <= self.weights_candidates[key2]:
+        #                 remove_list.append(key1)
+        #                 break
+        #         else:
+        #             if self.weights_candidates[key1] <= self.weights_candidates[key2]:
+        #                 remove_list.append(key1)
+        #                 break
+
+        for key in remove_list:
+            del self.weights_candidates[key]
+
+
+
+
+        sorted_weights = sorted(self.weights_candidates, key=self.weights_candidates.get, reverse=True)
+        print([w.surface_form for w in sorted_weights])
+        return sorted_weights[:(min(k, len(sorted_weights)))]
+
+    def generate_topic_words(self, emb_file, num_of_topics=8, length=20):
+        model = KeyedVectors.load_word2vec_format(emb_file, binary=False)
+        surface_word = []
+        emb = []
+        for word in self.word_list:
+            if word in model.vocab:
+                surface_word.append(word)
+                emb.append(model[word])
+
+        random.seed(42)
+
+        initial_medoids = random.sample(range(0, len(surface_word)), min(len(surface_word), num_of_topics))
+        metric = distance_metric(type_metric.MINKOWSKI, degree=2)
+        # create instance of K-Medoids algorithm
+        kmedoids_instance = kmedoids(emb, initial_medoids, metric=metric)
+        # run cluster analysis and obtain results
+        kmedoids_instance.process()
+        clusters = kmedoids_instance.get_clusters()
+        results = []
+        for i in range(num_of_topics):
+            print("topic" + str(i))
+            topic_word_list = [surface_word[ind] for ind in clusters[i]]
+            results.append(topic_word_list[:(min(length, len(topic_word_list)))])
+            print(", ".join(topic_word_list[:(min(length, len(topic_word_list)))]))
+        return results
+
+def x_in_y(query, base):
+    try:
+        l = len(query)
+    except TypeError:
+        l = 1
+        query = type(base)((query,))
+
+    for i in range(len(base)):
+        if base[i:i+l] == query:
+            return True
+    return False
 
 def get_phrases_extra(text, n=4, good_pos=None):
     """

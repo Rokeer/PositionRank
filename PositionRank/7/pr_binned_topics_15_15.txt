@@ -1,0 +1,15 @@
+topicx, disease, theft, access, solutions, spread, diseases, malaria, mosquito, bites, africa, nets, beds
+topicx, fact, question, president, point, favor, competition, states
+topicx, safety, scientists, astronauts, missions, ways, health, conditions, instruments, doctors, body, reaction, satellites, land, condition, crops
+topicx, benefits, area
+topicx, factories, water, gasoline, oceans, homes
+topicx, example
+topicx, medicine, food
+topicx, half, americans
+topicx, machines, exercise, airplanes, weather, forecasting, technologies, engineers
+topicx, belief, space, exploration, stem, money, spent, program, rocket, citizens, year, help, pollution, fuels, government, dollars
+topicx, spirit, decades, arguments, people, viewpoint, hunger, poverty, countries, care, investment, education, return, challenges, innovations, problems
+topicx, difficulty, housing
+topicx, cars, oil, air, forms, energy, power
+topicx, priority, needs, earth, argue, cost
+topicx, life, lives

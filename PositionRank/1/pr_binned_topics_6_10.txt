@@ -1,0 +1,6 @@
+topicx, year, years, farmers, plant, progress
+topicx, joyful, future, hannah, dirt, road, car, jump, sauri, market, women
+topicx, medicines, medicine, hospital, bed, rooms, patients, treatment, doctor, officer, water
+topicx, adults
+topicx, fight, lifetime
+topicx, development, brighter, millennium, village, villages, project, goals, plan, access, economy
